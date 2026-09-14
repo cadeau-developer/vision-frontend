@@ -6,7 +6,6 @@ services:
   - type: static
     name: vision-design-frontend
     runtime: node
-    rootDir: frontend-vision
     buildCommand: npm install && npm run build
     publishPath: dist/public
     envVars:
