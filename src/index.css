@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@theme inline {
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@theme {
+  --color-brand: #0e7490;
+  --color-brand-strong: #0b5a70;
+  --color-ink: #1d2a36;
+  --color-soft: #52667a;
+  --color-faint: #8796a6;
+  --color-canvas: #f5f7f9;
+  --color-line: #e3e9ee;
+}
+
+:root {
+  --background: 200 22% 97%;
+  --foreground: 213 31% 16%;
+  --card: 0 0% 100%;
+  --card-foreground: 213 31% 16%;
+  --border: 205 22% 88%;
+  --input: 205 22% 88%;
+  --ring: 194 81% 33%;
+  --primary: 194 81% 33%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 24% 20%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 200 20% 93%;
+  --muted-foreground: 212 18% 40%;
+  --accent: 194 81% 33%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --sidebar: 220 24% 20%;
+  --sidebar-foreground: 0 0% 100%;
+  --app-font-sans: 'Manrope', sans-serif;
+  --app-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --radius: 1rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f5f7f9; color: #1d2a36; font-family: var(--app-font-sans); }
+button, input, textarea, select { font: inherit; }
+::selection { background: #0e7490; color: #ffffff; }
+
+.eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; font-weight: 700; }
+.focus-ring:focus-visible { outline: 3px solid hsl(var(--ring) / .45); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; } }

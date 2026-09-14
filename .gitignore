@@ -1,0 +1,17 @@
+node_modules/
+**/dist/
+uploads/
+.env
+.env.local
+.env.*.local
+!.env.example
+!**/.env.example
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+# Contains plaintext database credentials — keep out of the repo.
+err.md
