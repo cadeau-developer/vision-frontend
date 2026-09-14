@@ -26,33 +26,37 @@ export function Admin() {
 
   return (
     <div className="min-h-[100dvh] bg-canvas">
-      <header className="border-b-2 border-brand-strong bg-gradient-to-r from-brand to-brand-strong text-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-4">
-          <Link href="/" className="flex items-center gap-2 font-extrabold text-white" data-testid="link-admin-logo">
-            <img src="/vision-logo.jpeg" alt="Vision Design logo" className="h-9 w-9 rounded-lg object-cover ring-2 ring-white/40" />
-            <span>Vision Design</span>
-          </Link>
-          <div className="flex items-center gap-4 text-sm">
-            <span className="max-w-[220px] truncate text-white/80">{session?.email}</span>
-            <Link href="/" className="hidden font-semibold text-white/85 transition hover:text-white sm:block" data-testid="link-admin-view-site">{t.nav.viewSite}</Link>
-            <button onClick={() => logout()} className="rounded-lg bg-white px-4 py-2 font-semibold text-brand transition hover:bg-canvas" data-testid="button-sign-out">{t.nav.signOut}</button>
+      <div className="sticky top-0 z-30">
+        <header className="border-b-2 border-brand-strong bg-gradient-to-r from-brand to-brand-strong text-white">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-4">
+            <Link href="/" className="flex items-center gap-2 font-extrabold text-white" data-testid="link-admin-logo">
+              <img src="/vision-logo.jpeg" alt="Vision Design logo" className="h-9 w-9 rounded-lg object-cover ring-2 ring-white/40" />
+              <span>Vision Design</span>
+            </Link>
+            <div className="flex items-center gap-4 text-sm">
+              <span className="max-w-[220px] truncate text-white/80">{session?.email}</span>
+              <Link href="/" className="hidden font-semibold text-white/85 transition hover:text-white sm:block" data-testid="link-admin-view-site">{t.nav.viewSite}</Link>
+              <button onClick={() => logout()} className="rounded-lg bg-white px-4 py-2 font-semibold text-brand transition hover:bg-canvas" data-testid="button-sign-out">{t.nav.signOut}</button>
+            </div>
           </div>
-        </div>
-      </header>
-      <nav className="mx-auto max-w-6xl px-5">
-        <div className="flex gap-1 overflow-x-auto pt-5">
-          {tabs.map(({ key, label, icon: Icon }) => (
-            <button
-              key={key}
-              onClick={() => setTab(key)}
-              className={`flex items-center gap-2 whitespace-nowrap rounded-t-md border-b-2 px-4 py-2.5 text-sm font-semibold transition ${tab === key ? 'border-brand text-brand' : 'border-transparent text-soft hover:text-ink'}`}
-              data-testid={`tab-admin-${key}`}
-            >
-              <Icon size={16} />{label}
-            </button>
-          ))}
-        </div>
-      </nav>
+        </header>
+        <nav className="border-b border-line bg-canvas">
+          <div className="mx-auto max-w-6xl px-5">
+            <div className="flex gap-1 overflow-x-auto pt-5">
+              {tabs.map(({ key, label, icon: Icon }) => (
+                <button
+                  key={key}
+                  onClick={() => setTab(key)}
+                  className={`flex items-center gap-2 whitespace-nowrap rounded-t-md border-b-2 px-4 py-2.5 text-sm font-semibold transition ${tab === key ? 'border-brand text-brand' : 'border-transparent text-soft hover:text-ink'}`}
+                  data-testid={`tab-admin-${key}`}
+                >
+                  <Icon size={16} />{label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </nav>
+      </div>
       <main className="mx-auto max-w-6xl px-5 py-6 pb-16">
         {tab === 'overview' && <Overview setTab={setTab} />}
         {tab === 'services' && <ServicesAdmin />}

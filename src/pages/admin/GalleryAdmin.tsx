@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import { Images, Loader2, Plus, Trash2, Upload } from 'lucide-react';
 import { deleteGalleryImage, listGallery, uploadGalleryImages, type GalleryImage } from '@/lib/gallery';
 import { AdminSection } from '@/components/AdminSection';
@@ -21,17 +21,24 @@ export function GalleryAdmin() {
     }
   };
 
+  useEffect(() => {
+    let ignore = false;
+    (async () => {
+      try {
+        const items = await listGallery();
+        if (!ignore) setImages(items);
+      } catch {
+        if (!ignore) setImages([]);
+      }
+    })();
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   const refresh = () => {
     load();
   };
-
-  useState(() => {
-    load();
-  });
-
-  if (images === null) {
-    load();
-  }
 
   const pickFiles = (event: ChangeEvent<HTMLInputElement>) => {
     setError('');
