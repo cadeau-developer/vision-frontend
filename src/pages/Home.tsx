@@ -7,6 +7,7 @@ import { iconFor } from '@/components/ServiceIcon';
 import { fallbackServices } from '@/data/services';
 import { translateServices } from '@/data/services-rw';
 import { listGallery, type GalleryImage } from '@/lib/gallery';
+import { resolveAssetUrl } from '@/lib/api-base';
 import {
   COMPANY_ADDRESS,
   COMPANY_EMAIL,
@@ -254,7 +255,7 @@ function GallerySection() {
           {images.map((image) => (
             <figure key={image.id} className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-line" data-testid={`card-public-gallery-${image.id}`}>
               <div className="aspect-square overflow-hidden bg-canvas">
-                <img src={image.url} alt={image.title ?? t.gallery.title} loading="lazy" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+                <img src={resolveAssetUrl(image.url)} alt={image.title ?? t.gallery.title} loading="lazy" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
               </div>
               {image.title && <figcaption className="truncate px-4 py-3 text-sm font-semibold text-ink">{image.title}</figcaption>}
             </figure>

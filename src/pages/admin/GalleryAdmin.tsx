@@ -3,6 +3,7 @@ import { Images, Loader2, Plus, Trash2, Upload } from 'lucide-react';
 import { deleteGalleryImage, listGallery, uploadGalleryImages, type GalleryImage } from '@/lib/gallery';
 import { AdminSection } from '@/components/AdminSection';
 import { useI18n } from '@/lib/i18n';
+import { resolveAssetUrl } from '@/lib/api-base';
 
 export function GalleryAdmin() {
   const { t } = useI18n();
@@ -77,7 +78,7 @@ export function GalleryAdmin() {
               data-testid={`card-gallery-${item.id}`}
             >
               <div className="aspect-square overflow-hidden bg-canvas">
-                <img src={item.url} alt={item.title ?? ''} loading="lazy" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+                <img src={resolveAssetUrl(item.url)} alt={item.title ?? ''} loading="lazy" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
               </div>
               <figcaption className="flex items-center justify-between gap-2 px-4 py-3">
                 <span className="truncate text-sm font-semibold text-ink">{item.title || '—'}</span>

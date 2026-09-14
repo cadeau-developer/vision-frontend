@@ -1,0 +1,14 @@
+# Render Blueprint — Vision Design frontend.
+# Deploys the Vite production build (dist/public) as a static site.
+# Replace the "npm run dev" Web Service with this blueprint to fix
+# the missing CSS / hanging-page issues on Render.
+services:
+  - type: static
+    name: vision-design-frontend
+    runtime: node
+    rootDir: frontend-vision
+    buildCommand: npm install && npm run build
+    publishPath: dist/public
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://api-visiondesign.onrender.com
